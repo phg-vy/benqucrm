@@ -1,7 +1,7 @@
 <script setup>
-import sideBar from './components/sideBar.vue'
-import iconTextButton from './components/iconTextButton.vue'
-import blogCard from './components/blogCard.vue'
+import blogCard from './components/blogCard.vue';
+import sideBar from './components/sideBar.vue';
+
 
 </script>
 
