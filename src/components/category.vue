@@ -1,21 +1,42 @@
 <script setup>
-import iconButton from "/src/components/iconButton.vue";
+import iconButton from '/src/components/iconButton.vue';
+import iconTextButton from '/src/components/iconTextButton.vue';
+
 import { ref, onMounted } from "vue";
 const cateList = ref([
   { id: 1, name: "Business" },
   { id: 2, name: "Education" },
   { id: 3, name: "Fashion" },
 ]);
+
+import alertDelete from '/src/components/alertDelete.vue';
+
+const showAlert = ref(false); // kiểm soát hiển thị
+
+
 </script>
 
 <template>
-  <div v-for="cate in cateList" :key="cate.id" class="flex gap-4 px-4 py-8 bg-white rounded-xl">
-    <div class="flex flex-col flex-2 text-center">
-      <h2 class="text-gray-300">Category name</h2>
-      <p class="justify-between">
-        {{ cate.name }}
-      </p>
-    </div>
-    <iconButton></iconButton>
+  <div class="flex justify-between pt-6">
+    <h1 class="text-3xl font-semibold">Category</h1>
+    <iconTextButton label="Create blog"></iconTextButton>
   </div>
+  <div class="flex flex-col gap-4">
+
+    <div v-for="cate in cateList" :key="cate.id" class="flex gap-4 px-4 py-8 bg-white rounded-xl">
+
+      <div class="flex flex-col flex-2 gap-4 text-center">
+        <h2 class="text-gray-300">Category name</h2>
+        <p class="justify-between">
+          {{ cate.name }}
+        </p>
+      </div>
+      <div class="flex items-center">
+        <iconButton @click="showAlert = true"></iconButton>
+      </div>
+    </div>
+  </div>
+
+  <alertDelete v-if="showAlert" @close="showAlert = false" />
+
 </template>
